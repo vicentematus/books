@@ -4,9 +4,9 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
+		"dev": "GOOGLE_APPLICATION_CREDENTIALS=secrets.json vite dev",
+		"build": "GOOGLE_APPLICATION_CREDENTIALS=secrets.json vite build",
+		"preview": "GOOGLE_APPLICATION_CREDENTIALS=secrets.json vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
@@ -34,6 +34,8 @@
 		"vite": "^5.4.11"
 	},
 	"dependencies": {
-		"@tailwindcss/typography": "^0.5.15"
+		"@tailwindcss/typography": "^0.5.15",
+		"@types/node": "^22.10.5",
+		"googleapis": "^144.0.0"
 	}
 }
