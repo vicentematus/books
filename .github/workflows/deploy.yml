@@ -4,8 +4,12 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -14,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20.15.1'
           
       - name: Create Service Account file
         run: echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > secrets.json
@@ -26,3 +30,9 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: secrets.json 
           SHEET_ID: ${{ vars.SHEET_ID }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
