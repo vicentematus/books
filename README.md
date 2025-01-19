@@ -38,6 +38,12 @@ Now you need to add the email of the service account to your google sheets as an
 To interact with the Google Sheets API, we need to  install the googleapis package.
 
 
+## Deployment
+
+
+- If you are using Github Actions, you need to create a secret that contains the `credentials.json` file.
+
+
 # Notes
 
 - For some reason bun doesnt read the .env file correctly? I need to explicitly pass down the env variable GOOGLE_APPLICATIONS_CREDENTIALS so it can read the secrets.json file.
