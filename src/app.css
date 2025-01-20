@@ -1,3 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+/* 
+TODO: Uncomment if I should add random fonts on the title.
+@import '@fontsource-variable/lora';
+@import '@fontsource/inknut-antiqua/600.css';
+@import '@fontsource/inknut-antiqua/700.css';
+@import '@fontsource/arvo/700.css';
+@import '@fontsource/arvo/400.css'; */
