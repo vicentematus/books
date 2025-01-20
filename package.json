@@ -34,6 +34,9 @@
 		"vite": "^5.4.11"
 	},
 	"dependencies": {
+		"@fontsource-variable/lora": "^5.1.1",
+		"@fontsource/arvo": "^5.1.1",
+		"@fontsource/inknut-antiqua": "^5.1.1",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/node": "^22.10.5",
 		"googleapis": "^144.0.0",
