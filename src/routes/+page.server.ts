@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { SHEET_ID, GOOGLE_APPLICATION_CREDENTIALS } from '$env/static/private';
+import { SHEET_ID } from '$env/static/private';
 import type { Book, ExclusiveShelf } from '$lib/types/book.model';
 export async function load() {
 	const auth = await google.auth.getClient({
@@ -11,9 +11,8 @@ export async function load() {
 	const IMAGE_URL_COLUMN = 'Y';
 	const range = `${INIT_RANGE}2:${IMAGE_URL_COLUMN}34`;
 
-	const DANGER_SHEET_ID = '1uyWKdom9BsoWUP5Hl32SUj-wmo-Eb9tGeSACJtmJhT8';
 	const response = await sheets.spreadsheets.values.get({
-		spreadsheetId: DANGER_SHEET_ID,
+		spreadsheetId: SHEET_ID,
 		range
 	});
 
@@ -31,15 +30,6 @@ export async function load() {
 }
 
 const toBookDomain = (row: string[]): Book => {
-	// if (row[19]) {
-	// 	console.log(row[19]);
-	// }
-	// if (row[20]) {
-	// 	console.log(row[20]);
-	// }
-	console.log({ row });
-	console.log({ row18: row[18] });
-	console.log({ row19: row[19] });
 	return {
 		bookId: row[0],
 		title: row[1],
