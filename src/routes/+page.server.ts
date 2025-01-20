@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { SHEET_ID, GOOGLE_APPLICATION_CREDENTIALS } from '$env/static/private';
-import type { Book } from '$lib/types/book.model';
+import type { Book, ExclusiveShelf } from '$lib/types/book.model';
 export async function load() {
 	const auth = await google.auth.getClient({
 		scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -38,6 +38,8 @@ const toBookDomain = (row: string[]): Book => {
 	// 	console.log(row[20]);
 	// }
 	console.log({ row });
+	console.log({ row18: row[18] });
+	console.log({ row19: row[19] });
 	return {
 		bookId: row[0],
 		title: row[1],
@@ -56,9 +58,8 @@ const toBookDomain = (row: string[]): Book => {
 		dateRead: row[14],
 		dateAdded: row[15],
 		bookshelves: row[16].split(','),
-		exclusiveShelf: row[17],
-		review: row[18],
-		spoiler: row[19],
+		exclusiveShelf: row[18] as ExclusiveShelf,
+		review: row[19],
 		imageUrl: row[24]
 	};
 };
