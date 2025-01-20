@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { register } from 'swiper/element/bundle';
 	import type { SwiperOptions } from 'swiper/types';
+	import { Image } from '@unpic/svelte';
 
 	let data = $props();
 	const {
@@ -77,11 +78,12 @@
 					{/if}
 				</div>
 
-
 				{#if book.imageUrl}
-					<img
+					<Image
 						src={book.imageUrl}
 						alt={book.title}
+						width={300}
+						layout="constrained"
 						class="mx-auto h-full w-full rounded-b-md object-cover"
 					/>
 				{/if}
