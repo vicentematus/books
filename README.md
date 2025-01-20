@@ -12,7 +12,7 @@ See what I'm reading by using Google Sheets as a database. [Check the live Googl
 
 ## How it works
 
-I started using [goodreads](https://www.goodreads.com/) to track what books I'm reading. [And found out that they don't support the use of public APIs.](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs)
+[Goodreads](https://www.goodreads.com/) interface sucks at showcasing your books. I started using to track what books I'm reading [and found out that they don't support the use of public APIs.](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs)
 
 Hearing about stories of websites using Google Sheets / Excel as a database like [Levels.fyi scaling to millions with Google Sheets](https://www.levels.fyi/blog/scaling-to-millions-with-google-sheets.html), made me want to try it.
 
