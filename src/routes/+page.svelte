@@ -3,110 +3,89 @@
 	import Review from '$lib/components/Review.svelte';
 	import { onMount } from 'svelte';
 	import { register } from 'swiper/element/bundle';
-	onMount(() => {
-		register();
-		const swiperEl = document.querySelector('swiper-container');
-
-		const swiperParams = {
-			slidesPerView: 2,
-			breakpoints: {
-				640: {
-					slidesPerView: 3
-				},
-				1024: {
-					slidesPerView: 5
-				}
-			},
-			spaceBetween: 10
-		};
-
-		// now we need to assign all parameters to Swiper element
-		Object.assign(swiperEl, swiperParams);
-
-		// and now initialize it
-		swiperEl.initialize();
-
-		swiperEl.addEventListener('click', (event) => {
-			console.log('click', event);
-		});
-	});
+	import type { SwiperOptions } from 'swiper/types';
 
 	let data = $props();
 	const {
 		data: { books }
 	} = data;
 
-	let container: HTMLElement;
-	const width = $derived(books.length * 300);
-	$inspect('cuanto sacamos', width);
+	onMount(() => {
+		// Swiper requires us to define the Web Component before using it.
+		register();
+		const swiperEl = document.querySelector('swiper-container');
+		if (!swiperEl) throw new Error('Swiper container not found');
+
+		const MOBILE_VIEW = 1;
+		const MEDIUM_VIEW = 3;
+		const LARGE_VIEW = 5;
+
+		const swiperParams: SwiperOptions = {
+			slidesPerView: MOBILE_VIEW,
+			breakpoints: {
+				640: {
+					slidesPerView: MEDIUM_VIEW
+				},
+				1024: {
+					slidesPerView: LARGE_VIEW
+				}
+			},
+			spaceBetween: 10,
+			autoplay: {
+				delay: 1000
+			},
+			loop: true,
+			speed: 1000
+		};
+
+		Object.assign(swiperEl, swiperParams);
+		swiperEl.initialize();
+		swiperEl.addEventListener('click', (event) => {
+			console.log('click', event);
+		});
+	});
 </script>
 
-<div class="flex min-h-screen w-full items-center justify-center">
-	<div class="min-h-screen min-w-[100vw]">
-		<h1 class="text-center font-serif text-3xl font-semibold">Que estoy leyendo</h1>
-		<swiper-container
-			class="scrollbar-visible mt-2 flex cursor-grab gap-4 overflow-x-auto pb-4"
-			speed="1000"
-			loop="true"
-			autoplay="true"
-			autoplay-delay="500"
-			init="false"
+<section class=" space-y-8">
+	<header class="flex flex-col items-center justify-center">
+		<h1 class="text-center font-serif text-3xl font-semibold">Vicente esta leyendo...</h1>
+		<a
+			href="https://www.goodreads.com/user/show/179930250-vicente"
+			target="_blank"
+			class="text-center font-semibold text-blue-800 underline"
 		>
-			{#each books as book}
-				<swiper-slide
-					class="relative h-full w-[300px] flex-shrink-0 rounded-md border border-gray-500 shadow-2xl"
-				>
-					<div class="p-4 flex flex-col">
-						<h1 class="text-center text-2xl font-bold">{book.title}</h1>
+			Mirar perfil en Goodreads
+		</a>
+	</header>
+
+	<swiper-container class="cursor-grab" init="false">
+		{#each books as book}
+			<swiper-slide class="rounded-md border border-gray-500 shadow-2xl">
+				<div class="flex flex-col gap-6 p-4">
+					<div>
+						<h2 class="text-center text-2xl font-bold">{book.title}</h2>
 						<p class="text-center">{book.author}</p>
-						{#if book.review || book.rating}
-							<Review review={book.review} rating={book.rating} />
-						{/if}
-						<ExclusiveShelf exclusiveShelf={book.exclusiveShelf} />
 					</div>
 
-					{#if book.imageUrl}
-						<img src={book.imageUrl} alt={book.title} class="mx-auto h-full w-full object-cover" />
+					{#if book.review || book.rating}
+						<Review review={book.review} rating={book.rating} />
 					{/if}
-				</swiper-slide>
-			{/each}
-		</swiper-container>
-	</div>
-</div>
+					{#if book.exclusiveShelf !== 'read'}
+						<div class="flex justify-center">
+							<ExclusiveShelf exclusiveShelf={book.exclusiveShelf} />
+						</div>
+					{/if}
+				</div>
 
-<style>
-	.scrollbar-visible {
-		scrollbar-gutter: stable;
-		-webkit-overflow-scrolling: touch;
-		&::-webkit-scrollbar {
-			height: 8px;
-			background: #f1f1f1;
-		}
-		&::-webkit-scrollbar-thumb {
-			background: #888;
-			border-radius: 4px;
-		}
-		scrollbar-width: thin;
-	}
 
-	.animate-scroll {
-		animation: scroll 15s linear infinite;
-	}
-
-	@keyframes scroll {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-35%);
-		}
-	}
-
-	.animate-scroll:active {
-		animation-play-state: paused;
-	}
-
-	swiper-container {
-		width: 100%;
-	}
-</style>
+				{#if book.imageUrl}
+					<img
+						src={book.imageUrl}
+						alt={book.title}
+						class="mx-auto h-full w-full rounded-b-md object-cover"
+					/>
+				{/if}
+			</swiper-slide>
+		{/each}
+	</swiper-container>
+</section>
