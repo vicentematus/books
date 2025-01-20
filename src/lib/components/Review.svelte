@@ -5,7 +5,7 @@
 	import goldenSunYes from '$lib/assets/gifs/golden-sun-yes.gif';
 	import quote from '$lib/assets/gifs/quote.gif';
 	import star from '$lib/assets/gifs/psy-crystal.gif';
-	import marioStar from '$lib/assets/gifs/mario-star.png';
+	// import marioStar from '$lib/assets/gifs/mario-star.png';
 
 	interface ReviewProps {
 		review: string;
@@ -24,7 +24,7 @@
 
 {#snippet ratingOnly()}
 	{#each Array(ceilRating) as _}
-		<img src={marioStar} alt="Star" class="h-6 w-6" />
+		<img src={star} alt="Star" class="h-6 w-6" />
 	{/each}
 	<p class="font-serif text-gray-600">
 		{ceilRating} / 5
@@ -38,7 +38,7 @@
 		</p>
 		<div class="flex gap-2">
 			{#each Array(ceilRating) as _}
-				<img src={marioStar} alt="Star" class="h-6 w-6" />
+				<img src={star} alt="Star" class="h-6 w-6" />
 			{/each}
 			<p class="font-serif text-gray-600">
 				{ceilRating} / 5
