@@ -2,7 +2,9 @@
 
 # Books I'm reading
 
-See what I'm reading by using "Excel" as a database for the win.
+See what I'm reading by using Google Sheets as a database.
+
+[See the live Google Sheets ](https://docs.google.com/spreadsheets/d/1uyWKdom9BsoWUP5Hl32SUj-wmo-Eb9tGeSACJtmJhT8/edit?usp=sharing)
 
 ## How it works
 
@@ -33,23 +35,27 @@ To expose using Sheets as an API you need to enable it [on  Google Cloud](https:
 }
 ```
 
-Now you need to add the email of the service account to your google sheets as an Editor.
+This file needs to live on the root of your project.
 
-To interact with the Google Sheets API, we need to  install the googleapis package.
+Now you need to add the email of the service account to your Google Gheets as an Editor.
 
+To interact with the Google Sheets API, we need to install the googleapis package.
+
+After that, we can use the library for accesing the ROWS and COLUMNS of the Sheet and start querying.
 
 ## Deployment
 
+- IMPORTANT: If you are using Github Actions, you need to create a secret that contains the content of `credentials.json`. You can't deploy it without this file.
+- In this example we are using static site generation with SvelteKit. That mean we need to run "bun run build" everytime we wan't to update the site with the latest books.
+- To update the list of books i'm reading, I manually export the CSV and copy the last rows to Google Sheets. 
+- You need to search manually for the image of the book.
 
-- If you are using Github Actions, you need to create a secret that contains the `credentials.json` file.
-
-
-# Notes
+# Notes for future-self.
 
 - For some reason bun doesnt read the .env file correctly? I need to explicitly pass down the env variable GOOGLE_APPLICATIONS_CREDENTIALS so it can read the secrets.json file.
+- Better animations. clear spacing, yadayadaya...
 
+# References
 
-## References
-
-- https://youtu.be/K6Vcfm7TA5U
-- https://www.youtube.com/watch?v=zCEJurLGFRk
+- [Google Sheets… Your Next Database? ](https://youtu.be/K6Vcfm7TA5U)
+- [Service Account Setup Guide](https://www.youtube.com/watch?v=zCEJurLGFRk)
