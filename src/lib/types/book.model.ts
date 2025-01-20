@@ -1,3 +1,5 @@
+export type ExclusiveShelf = 'read' | 'to-read' | 'currently-reading';
+
 export interface Book {
 	bookId: string;
 	title: string;
@@ -16,8 +18,7 @@ export interface Book {
 	dateRead: string;
 	dateAdded: string;
 	bookshelves: string[];
-	exclusiveShelf: string;
+	exclusiveShelf: ExclusiveShelf;
 	review: string;
-	spoiler: string;
 	imageUrl: string;
 }
