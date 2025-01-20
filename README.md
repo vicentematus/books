@@ -50,8 +50,10 @@ After that, we can use the library for accesing the ROWS and COLUMNS of the Shee
 ## Deployment
 
 > [!WARNING]
-> Images are not optimized for external CDNs / URLs. The network request are heavy. 
+> Expect cumulative Layout Shift (CLS) on the first load, caused by the swiper library and the onMount hook I'm using.
 
+> [!WARNING]
+> Images are not optimized for external CDNs / URLs. The network request are heavy. 
 - IMPORTANT: If you are using Github Actions, you need to create a secret that contains the content of `credentials.json`. You can't deploy it without this file.
 - Create a enviroment variable for SHEET_ID which corresponds to your public Google Sheet url ID.
 
