@@ -1,48 +1,46 @@
 <script lang="ts">
 	import sleepNotRead from '$lib/assets/gifs/sleep-not-read.gif';
 	import reading from '$lib/assets/gifs/reading.gif';
+	import type { ExclusiveShelf } from '$lib/types/book.model';
 	interface ExclusiveShelfProps {
-		exclusiveShelf: string;
+		exclusiveShelf: ExclusiveShelf;
 	}
 
 	let { exclusiveShelf }: ExclusiveShelfProps = $props();
-
 </script>
 
-<!-- 
-TODO: I don't know if I should show this.
-{#snippet read()}
-	<p>Leído</p>
-{/snippet} -->
-
 {#snippet toRead()}
-	<img src={sleepNotRead} alt="Sleep not read" />
-	<p class="loading-text">Lo quiero leer <span class="dots-container">
-			<span class="dot">.</span>
-			<span class="dot">.</span>
-			<span class="dot">.</span>
-		</span></p>
-{/snippet}
-
-{#snippet currentlyReading()}
-	<img src={reading} alt="Reading" />
-	<p class="loading-text">
-		Leyendo<span class="dots-container">
+	<div class="inline-flex items-center gap-4 rounded-lg shadow-sm bg-yellow-100 border-l-4 border-yellow-800  pr-2 ">
+		<img src={sleepNotRead} class="h-10 w-10" alt="Sleep not read" />
+		<p class="loading-text">
+			Lo quiero leer <span class="dots-container">
 			<span class="dot">.</span>
 			<span class="dot">.</span>
 			<span class="dot">.</span>
 		</span>
 	</p>
+</div>
+
 {/snippet}
 
+{#snippet currentlyReading()}
+	<div class="inline-flex items-center gap-4 rounded-lg shadow-sm bg-green-200 border-l-4 border-green-800  pr-2">
+		<img src={reading} class="h-10 w-10" alt="Reading" />
+		<p class="loading-text">
+			Leyendo<span class="dots-container">
+				<span class="dot">.</span>
+				<span class="dot">.</span>
+				<span class="dot">.</span>
+			</span>
+		</p>
+	</div>
+{/snippet}
 
-<div class="inline-flex rounded-lg shadow-sm" class:bg-yellow-200={exclusiveShelf === 'to-read'} class:bg-green-200={exclusiveShelf === 'currently-reading'}>
-	{#if exclusiveShelf === 'to-read'}
-		{@render toRead()}
-	{:else if exclusiveShelf === 'currently-reading'}
-		{@render currentlyReading()}
-	{/if}
-</div>
+{#if exclusiveShelf === 'to-read'}
+	{@render toRead()}
+{:else if exclusiveShelf === 'currently-reading'}
+	{@render currentlyReading()}
+{/if}
 
 <style>
 	/* Claude sponsored this. */
