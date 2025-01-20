@@ -48,6 +48,8 @@
 			class="scrollbar-visible mt-2 flex cursor-grab gap-4 overflow-x-auto pb-4"
 			speed="1000"
 			loop="true"
+			autoplay="true"
+			autoplay-delay="500"
 			init="false"
 		>
 			{#each books as book}
