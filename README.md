@@ -15,7 +15,7 @@ Hearing about stories of websites using Google Sheets / Excel as a database like
 [Goodreads supports exporting your information as a .csv file](https://help.goodreads.com/s/article/How-do-I-import-or-export-my-books-1553870934590). Then import the CSV into Google Sheets and let the magic begin.
 
 
-### Setup 
+## Setup 
 
 To expose using Sheets as an API you need to enable it [on  Google Cloud](https://developers.google.com/sheets/api/guides/concepts), then create a service account, and export the ´credentials.json´ to a file. [See more on this video.](https://www.youtube.com/watch?v=zCEJurLGFRk) Your credentials.json should look like this:
 
@@ -46,16 +46,19 @@ After that, we can use the library for accesing the ROWS and COLUMNS of the Shee
 ## Deployment
 
 - IMPORTANT: If you are using Github Actions, you need to create a secret that contains the content of `credentials.json`. You can't deploy it without this file.
+- Create a enviroment variable for SHEET_ID which corresponds to your public Google Sheet url ID.
+
+## Considerations
 - In this example we are using static site generation with SvelteKit. That mean we need to run "bun run build" everytime we wan't to update the site with the latest books.
 - To update the list of books i'm reading, I manually export the CSV and copy the last rows to Google Sheets. 
 - You need to search manually for the image of the book.
 
-# Notes for future-self.
+### Notes for future-self.
 
 - For some reason bun doesnt read the .env file correctly? I need to explicitly pass down the env variable GOOGLE_APPLICATIONS_CREDENTIALS so it can read the secrets.json file.
-- Better animations. clear spacing, yadayadaya...
+- Better animations. clear spacing, yadayadaya... 
 
-# References
+## References
 
 - [Google Sheets… Your Next Database? ](https://youtu.be/K6Vcfm7TA5U)
 - [Service Account Setup Guide](https://www.youtube.com/watch?v=zCEJurLGFRk)
