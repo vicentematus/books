@@ -1,7 +1,6 @@
 
 
-# Books I'm reading
-
+# Goodreads to Google Sheets: because the UI sucks
 
 https://github.com/user-attachments/assets/f33b9052-9cde-425e-8607-d2a94f50d9e2
 
