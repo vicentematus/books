@@ -57,7 +57,7 @@ After that, we can use the library for accesing the ROWS and COLUMNS of the Shee
 - Create a enviroment variable for SHEET_ID which corresponds to your public Google Sheet url ID.
 
 ## Considerations
-- In this example we are using static site generation with SvelteKit. That mean we need to run "bun run build" everytime we wan't to update the site with the latest books.
+- In this example we are using static site generation with SvelteKit. That mean we need to build again the site (`bun run build` or run again the Github Action) everytime we wan't to update the site with the latest books.
 - To update the list of books i'm reading, I manually export the CSV and copy the last rows to Google Sheets. 
 - You need to search manually for the image of the book.
 
