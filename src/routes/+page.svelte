@@ -80,6 +80,7 @@
 
 				{#if book.imageUrl}
 					<img
+						loading="lazy"
 						src={book.imageUrl}
 						alt={book.title}
 						class="mx-auto h-full w-full rounded-b-md object-cover"
