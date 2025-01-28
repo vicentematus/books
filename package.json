@@ -39,7 +39,6 @@
 		"@fontsource/inknut-antiqua": "^5.1.1",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/node": "^22.10.5",
-		"@unpic/svelte": "^1.0.0",
 		"googleapis": "^144.0.0",
 		"swiper": "^11.2.1"
 	}
