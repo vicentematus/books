@@ -64,7 +64,8 @@ After that, we can use the library for accesing the ROWS and COLUMNS of the Shee
 ### Notes for future-self.
 
 - For some reason bun doesnt read the .env file correctly? I need to explicitly pass down the env variable GOOGLE_APPLICATIONS_CREDENTIALS so it can read the secrets.json file.
-- Better animations. clear spacing, yadayadaya... 
+- Better animations. clear spacing, yadayadaya...
+- Instead of manually searching for images in Google, use the [Google Books API](https://developers.google.com/books/docs/v1/getting_started) to get information about the book.
 
 ## References
 
