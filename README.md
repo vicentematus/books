@@ -7,7 +7,7 @@ https://github.com/user-attachments/assets/f33b9052-9cde-425e-8607-d2a94f50d9e2
 
 See what I'm reading by using Google Sheets as a database. [Check the live Google Sheets ](https://docs.google.com/spreadsheets/d/1uyWKdom9BsoWUP5Hl32SUj-wmo-Eb9tGeSACJtmJhT8/edit?usp=sharing)
 
-[View deploy here](vicentematus.github.io/books/)
+[View deploy here](https://vicentematus.github.io/books/)
 
 ## How it works
 
